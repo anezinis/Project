@@ -1,0 +1,58 @@
+<html>
+<body>  
+
+<div class="patient-detail-container" *ngIf="!isLoading && patient">
+    <div class="header-section">
+        <h2 class="header-text">Patient Details</h2>
+    </div>
+
+    <div class="section general-info">
+        <h4 class="section-header">General Information</h4>
+        <div class="info-block">
+            <div class="info-row">
+                <p><strong>First Name:</strong> {{ patient.firstname }}</p>
+                <p><strong>Last Name:</strong> {{ patient.lastname }}</p>
+            </div>
+            <div class="info-row">
+                <p><strong>Email:</strong> {{ patient.email }}</p>
+                <p><strong>Phone:</strong> {{ patient.phonenumber }}</p>
+            </div>
+            <div class="info-row">
+                <p><strong>Age:</strong> {{ patient.age }}</p>
+                <p><strong>Sex:</strong> {{ patient.sex }}</p>
+            </div>
+            <p><strong>Patient ID:</strong> {{ patient.patient_id }}</p>
+            <div class="info-row">
+                <p><strong>Facility Name:</strong> {{ patient.facility.facility_name }}</p>
+                <p><strong>Facility Address:</strong> {{ patient.facility.facility_address }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section address-info">
+        <h4 class="section-header">Address Information</h4>
+        <div class="info-block">
+            <div class="info-row">
+                <p><strong>Street:</strong> {{ patient.address_street }}</p>
+                <p><strong>Number:</strong> {{ patient.address_number }}</p>
+            </div>
+            <div class="info-row">
+                <p><strong>City:</strong> {{ patient.address_city }}</p>
+                <p><strong>Postal Code:</strong> {{ patient.address_postalcode }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-btn-container">
+        <button class="btn custom-back-btn" (click)="goBack()">Back to Patient List</button>
+    </div>
+</div>
+
+<div class="loading-container" *ngIf="isLoading">
+    <p>Loading patient details...</p>
+</div>
+<div class="error-container" *ngIf="error">
+    <p class="error-message">{{ error }}</p>
+</div>
+</body>
+</html>

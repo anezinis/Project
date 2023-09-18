@@ -1,0 +1,104 @@
+<div class="patient-add-container">
+    <h2 class="header-text">Add Patient</h2>
+
+    <form [formGroup]="patientForm" class="patient-form" (ngSubmit)="onSubmit()">
+
+        <div class="section">
+            <h4 class="section-header">General Information</h4>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="firstname">First Name *</label>
+                    <input type="text" id="firstname" class="form-control" formControlName="firstname">
+                    <div *ngIf="patientForm.get('firstname').touched && patientForm.get('firstname').errors?.['required']">First name is required.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastname">Last Name *</label>
+                    <input type="text" id="lastname" class="form-control" formControlName="lastname">
+                    <div *ngIf="patientForm.get('lastname').touched && patientForm.get('lastname').errors?.['required']">Last name is required.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" class="form-control" formControlName="email">
+                    <div *ngIf="patientForm.get('email').touched && patientForm.get('email').errors?.['required']">Email is required.</div>
+                    <div *ngIf="patientForm.get('email').touched && patientForm.get('email').errors?.['email']">Invalid email format.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="birth_date">Birth Date *</label>
+                    <input type="date" id="birth_date" class="form-control" formControlName="birth_date">
+                    <div *ngIf="patientForm.get('birth_date').touched && patientForm.get('birth_date').errors?.['required']">Birth date is required.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="sex">Sex *</label>
+                    <select id="sex" class="form-control" formControlName="sex">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <div *ngIf="patientForm.get('sex').touched && patientForm.get('sex').errors?.['required']">Sex is required.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ssn">Social Security Number *</label>
+                    <input type="text" id="ssn" class="form-control" formControlName="ssn">
+                    <div *ngIf="patientForm.get('ssn').touched && patientForm.get('ssn').errors?.['required']">Social Security Number is required.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="facility_name">Facility Name *</label>
+                    <input type="text" id="facility_name" class="form-control" formControlName="facility_name">
+                    <div *ngIf="patientForm.get('facility_name').touched && patientForm.get('facility_name').errors?.['required']">Facility name is required.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" class="form-control" formControlName="phone">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h4 class="section-header">Address Information</h4>
+
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="address_street">Street *</label>
+                    <input type="text" id="address_street" class="form-control" formControlName="address_street">
+                    <div *ngIf="patientForm.get('address_street').touched && patientForm.get('address_street').errors?.['required']">Street is required.</div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="address_number">Number *</label>
+                    <input type="text" id="address_number" class="form-control" formControlName="address_number">
+                    <div *ngIf="patientForm.get('address_number').touched && patientForm.get('address_number').errors?.['required']">Number is required.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="address_city">City *</label>
+                    <input type="text" id="address_city" class="form-control" formControlName="address_city">
+                    <div *ngIf="patientForm.get('address_city').touched && patientForm.get('address_city').errors?.['required']">City is required.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="address_postalcode">Postal Code *</label>
+                    <input type="text" id="address_postalcode" class="form-control" formControlName="address_postalcode">
+                    <div *ngIf="patientForm.get('address_postalcode').touched && patientForm.get('address_postalcode').errors?.['required']">Postal code is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-muted mt-2 mb-4">
+            Fields marked with * are mandatory.
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn custom-submit-btn" [disabled]="!patientForm.valid">Submit</button>
+            <button class="btn custom-submit-btn" (click)="goToPatientsList()">Back to Patient List</button>
+        </div>
+    </form>
+</div>

@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.footer-content {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333; 
+    color: #fff; 
+    font-size: 0.9rem;
+    border-top: 1px solid #444; 
+}
+
+.app-container footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+

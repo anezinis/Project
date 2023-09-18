@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Cards</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="top-buttons">
+    <button class="btn custom-btn add-btn" (click)="navigateToAddPatient()">Add Patient</button>
+    <button class="btn custom-btn logout-btn" (click)="handleLogout()">Log Out</button>
+</div>
+
+<div class="container mt-4">
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <h5>API takes a bit.</h5>
+
+    </div>
+
+    <div *ngIf="!isLoading">
+    <div class="row">
+        <div *ngFor="let newPatient of newPatients" class="col-md-4 mb-4">
+            <div class="card new-card" [routerLink]="['/patient/new', newPatient.patient_id]" style="cursor: pointer;">
+                <span class="badge badge-info">New</span>
+                <div class="card-body">
+                    <h5 class="card-title">{{ newPatient.patient_id }}</h5>
+                    <p class="card-text">
+                        <strong>Heart Rate:</strong> {{ newPatient.heart_rate ? newPatient.heart_rate : 'Not yet added' }}<br>
+                        <strong>Diastolic Blood Pressure:</strong> {{ newPatient.dia_blood_pressure ? newPatient.dia_blood_pressure : 'Not yet added' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let patient of patients" class="col-md-4 mb-4">
+            <div class="card" [routerLink]="['/patient', patient.patient_id]" style="cursor: pointer;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ patient.firstname }} {{ patient.lastname }}</h5>
+                    <p class="card-text">
+                        <strong>Heart Rate:</strong> {{ patient.heart_rate }}<br>
+                        <strong>Diastolic Blood Pressure:</strong> {{ patient.dia_blood_pressure }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
